@@ -1,0 +1,157 @@
+.dashboard{
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(circle, #3b0256,#0b0234,black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.dashboard-card{
+    width: 90%;
+    background-color: white;
+    height: 90%;
+    border-radius: 10px;
+    display: flex;
+    box-shadow: 0 0 20px #5a5a5a, 0 0 30px #a5afe1 ;
+}
+.dashboard-conversation{
+    flex: 0.3;
+    border-right: 1px solid #d6d6d6;
+}
+
+.dashboard-conv-block{
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+}
+.dashboard-title-block{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+ 
+    font-size: 32px;
+}
+.dashboard-title-block div{
+    color: black;
+}
+.searchaBoxDiv{
+    width: 100%;
+    box-sizing: border-box;
+    margin: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.searchBox{
+     width: 85%;
+     height: 40px;
+     padding: 10px 30px;
+     box-sizing: border-box;
+     border-radius: 20px;
+     border: 1px solid rgb(190,190,190);
+     background-color: #f0f2f5;
+     &:focus{
+        outline: none;
+      
+        
+     }
+}
+.searchBoxIcon{
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 5px;
+border: 1px solid;
+width: 45px;
+height: 45px;
+cursor: pointer;
+border-radius:100% ;
+background: radial-gradient(circle, #3b0256,#0b0234,black);
+
+color: white;
+&:hover{
+    opacity: 0.4;
+}
+}
+.conv-block{
+    width: 100%;
+    flex-grow:1 ;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+}
+.noChatSelected{
+    flex: 0.7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: #746565;
+}
+.searched-box{
+    position: absolute;
+    top: 40px;
+    left: 15px;
+    z-index: 1;
+    width: 77%;
+    background-color: white;
+    border: 1px solid;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.search-item{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+    &:hover{
+        background-color: #f0f2f5;
+    }
+}
+.search-item-profile{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+.search-item-mobile{
+    font-size: 14px;
+    color: #f0f2f5;
+}
+@media (max-width: 768px) {
+    
+    .dashboard-card{
+        width: 100%;
+        height: 100vh;
+    }
+    .dashboard-conversation{
+        flex:1;
+        width: 100%;
+        border: none;
+    }
+    .responsive-dashboard-conversation{
+        flex: 0;
+
+    }
+    .responsive-dashboard-conversation2{
+        flex: 1;
+    }
+    .responsive-dashboard-title-block{
+        display: none;
+    }
+.responsive-searchaBoxDiv{
+    display: none;
+}
+.noChatSelected{
+    display: none;
+}
+  }

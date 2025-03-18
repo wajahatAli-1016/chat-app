@@ -1,0 +1,81 @@
+.profileSelector{
+    position: fixed;
+    width: 100%;
+    height: 150vh;
+    left: 0px;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profileCard{
+    background-color: white;
+    padding: 20px;
+    height: 50%;
+    width: 60%;
+    border-radius: 10px;
+    margin-top: 55px;
+}
+.profile-selector-header{
+    font-size: 24px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+.profile-section{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    gap: 100px;
+}
+.profile-section-gender{
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    gap: 30px;
+    grid-template-rows: 100px 100px 100px;
+     position: relative;
+    /* left: 0px; */
+}
+.profile-section-gender-div{
+    width: 100%;
+    padding: 5px;
+    border-radius: 50%;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+    &:hover{
+        background: black ;
+    }
+}
+.profile-section-image{
+    width: 100%;
+    height: 100%;
+    border-radius:50% ;
+}
+@media (max-width: 768px){
+    .profile-section-image{
+        width: 100%;
+        height: 100%;
+    }
+    .profile-section-gender-div{
+        width: 40%;
+        height: 40%;
+    }
+    .profile-section-gender{
+        width: 50%;
+        gap: 0px;
+        grid-template-columns: 80px 80px 80px;
+        grid-template-rows: 80px 80px 80px;
+    }
+    .profile-section{
+        gap: 20px;
+        flex-direction: column;
+        
+    }
+    .profileCard{
+        height: 45%;
+    }
+}

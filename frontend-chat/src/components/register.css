@@ -1,0 +1,72 @@
+
+.register-card{
+    width: 60%;
+    height: fit-content;
+    box-sizing: border-box;
+    margin-top: 5%;
+    padding: 10px;
+    background: rgba(0,0,0,0.1);
+    color: black;
+    box-shadow: 0 0 10px #a18c8c, 0 0 20px #ffffff;
+    transition: transform 0.5s;
+}
+.register-card:hover{
+    transform: scale(1.1);
+}
+.imageFile{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.select-profile-btn{
+    margin-left: 75px;
+    padding: 10px;
+    border: 1px solid;
+    cursor: pointer;
+    width: fit-content;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    height: fit-content;
+}
+.avatar{
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    margin-left: 0px;
+}
+.modal-profile{
+    position:fixed;
+    width: 100%;
+    height: 150vh;
+    left: 0px;
+    background-color: rgba(0, 0,0,0.5);
+}
+.linkedlinks{
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .login{
+      width: 100%;
+      margin-left:80px;
+      margin-top: 0px;
+      height: 100vh;
+  
+    }
+    .register-card{
+        width: 80%;
+    }
+   
+    .login-form{
+    width: 95%;
+        
+      }
+      .avatar{
+        width: 50px;
+        height: 50px;
+      }
+    .select-profile-btn{
+        margin-left: 15px;
+    }
+  }
