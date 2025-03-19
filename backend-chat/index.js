@@ -8,8 +8,8 @@ const PORT = 8000;
 const server= http.createServer(app);
 const io = new Server(server,{
     cors:{
-        origin:"http://localhost:3000",
-        methods:['GET','POST'],
+        origin: ["http://localhost:3000", "https://chat-app-i4tv.vercel.app"], // Add both local and production origins
+        methods: ["GET", "POST"],
     }
 })
 const UserRoutes = require('./Routes/user');
