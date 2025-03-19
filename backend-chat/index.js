@@ -10,6 +10,7 @@ const io = new Server(server,{
     cors:{
         origin: ["http://localhost:3000", "https://chat-app-i4tv.vercel.app"], // Add both local and production origins
         methods: ["GET", "POST"],
+         credentials: true,
     }
 })
 const UserRoutes = require('./Routes/user');
