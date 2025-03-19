@@ -40,6 +40,7 @@ app.use(cors({
    origin: "https://chat-app-i4tv.vercel.app",
     credentials: true,
 }))
+app.options('*', cors());
 
 
 app.use('/api/auth',UserRoutes);
