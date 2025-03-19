@@ -6,10 +6,18 @@ const {Server} = require('socket.io')
 const http = require('http');
 const PORT = 8000;
 const server= http.createServer(app);
+const allowedOrigins = ['https://chat-app-i4tv.vercel.app'];
 const io = new Server(server,{
     cors:{
-        origin: [ "https://chat-app-i4tv.vercel.app"], // Add both local and production origins
-        methods: ["GET", "POST"],
+        origin:function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true); // Allow the origin
+    } else {
+      callback(new Error('Not allowed by CORS')); // Reject the request
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Define allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], 
          credentials: true,
     }
 })
