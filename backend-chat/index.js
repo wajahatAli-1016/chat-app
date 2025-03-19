@@ -37,8 +37,8 @@ io.on('connection',(socket)=>{
 })
 
 app.use(cors({
-    credentials:true,
-    ["http://localhost:3000", "https://chat-app-i4tv.vercel.app"], 
+   origin: "https://chat-app-i4tv.vercel.app",
+    credentials: true,
 }))
 
 
