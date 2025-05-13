@@ -16,8 +16,6 @@ const io = new Server(server,{
       callback(new Error('Not allowed by CORS')); // Reject the request
     }
   },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Define allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], 
          credentials: true,
     }
 })
