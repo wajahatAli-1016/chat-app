@@ -8,16 +8,10 @@ const PORT = process.env.PORT || 8000;
 const server= http.createServer(app);
 const allowedOrigins = 'https://chat-app-i4tv.vercel.app';
 const io = new Server(server,{
-    cors:{
-        origin:function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true); // Allow the origin
-    } else {
-      callback(new Error('Not allowed by CORS')); // Reject the request
-    }
-  },
-         credentials: true,
-    }
+ cors: {
+    origin: "https://chat-app-i4tv.vercel.app",
+    credentials: true
+  }
 })
 const UserRoutes = require('./Routes/user');
 const ConversationRoutes = require('./Routes/conversation');
