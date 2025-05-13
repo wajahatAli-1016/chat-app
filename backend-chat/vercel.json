@@ -1,12 +1,15 @@
 {
-  "headers": [
-    {
-      "source": "/api/(.*)", // Apply to all routes under /api
-      "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "https://chat-app-i4tv.vercel.app" }, // Replace with your frontend URL
-        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,PUT,DELETE,OPTIONS" }, // Allowed HTTP methods
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" } // Allowed headers
-      ]
-    }
-  ]
-}
+    "version": 2,
+    "builds": [
+      {
+        "src": "index.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "index.js"
+      }
+    ]
+  }
