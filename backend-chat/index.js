@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cookieParser = require("cookie-parser");
@@ -6,13 +7,23 @@ const {Server} = require('socket.io')
 const http = require('http');
 const PORT = process.env.PORT || 8000;
 const server= http.createServer(app);
-const allowedOrigins = 'https://chat-app-i4tv.vercel.app';
+// CORS configuration for both development and production
+const allowedOrigins = [
+  
+    'https://chat-app-i4tv.vercel.app/'
+].filter(Boolean); // Remove undefined values
+
 const io = new Server(server,{
- cors: {
-    origin: "https://chat-app-i4tv.vercel.app",
-    credentials: true
-  }
+   cors: {
+   origin: allowedOrigins,
+    credentials: true,
+}
 })
+
+app.use(cors({
+   origin: allowedOrigins,
+    credentials: true,
+}))
 const UserRoutes = require('./Routes/user');
 const ConversationRoutes = require('./Routes/conversation');
 const MessageRoutes = require('./Routes/message');
@@ -36,10 +47,7 @@ io.on('connection',(socket)=>{
     })
 })
 
-app.use(cors({
-   origin: "https://chat-app-i4tv.vercel.app",
-    credentials: true,
-}))
+
 app.options('*', cors());
 
 
