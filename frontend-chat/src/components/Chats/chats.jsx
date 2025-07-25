@@ -1,14 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './chats.css'
 import SendIcon from '@mui/icons-material/Send';
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import axios from 'axios';
 import socket from '../../socket'
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
+import EmojiPicker from 'emoji-picker-react';
+
 const Chats = (props) => {
     const [content,setContent] = useState('');
     const [chats,setChats] = useState([]);
+    const [showEmojiPicker, setShowEmojiPicker] = useState(false);
     const ownId = JSON.parse(localStorage.getItem("userInfo"))._id;
     const ref = useRef();
+    const emojiPickerRef = useRef();
     
 
     const  fetchMessages = async ()=>{
@@ -26,11 +31,19 @@ const Chats = (props) => {
         },{withCredentials:true}).then(response=>{
             socket.emit("sendMessage",props.selectedId,response.data);
             setContent("");
+            setShowEmojiPicker(false);
           console.log(response)
         }).catch(err=>{
             console.log(err);
         })
     }
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            handleSendMessage();
+        }
+    };
 
     useEffect(()=>{
         socket.on("recieveMessage",(response)=>{
@@ -52,6 +65,29 @@ const Chats = (props) => {
         const chat= document.getElementById('chat');
         chat.classList.remove('responsive-chat')
     }
+
+    const handleEmojiClick = (emojiObject) => {
+        setContent(prevContent => prevContent + emojiObject.emoji);
+        // Keep emoji picker open for multiple emoji selection
+    };
+
+    const toggleEmojiPicker = () => {
+        setShowEmojiPicker(!showEmojiPicker);
+    };
+
+    // Close emoji picker when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (emojiPickerRef.current && !emojiPickerRef.current.contains(event.target)) {
+                setShowEmojiPicker(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     return (
         <div id='chat' className={`dashboard-chats ${props.selectedUser?`responsive-chat`:''}${props.selectedUser!==true?`remove-responsive-chat`:''}`}>
@@ -85,7 +121,30 @@ const Chats = (props) => {
                </div>
             <div className='message-box'>
                <div className='message-input-box'>
-                <input value={content} onChange={(event)=>{setContent(event.target.value)}} type='text' placeholder='Type Your Message' className='searchBox messageBox'/>
+                <input 
+                    value={content} 
+                    onChange={(event)=>{setContent(event.target.value)}} 
+                    onKeyPress={handleKeyPress}
+                    type='text' 
+                    placeholder='Type Your Message' 
+                    className='searchBox messageBox'
+                />
+                <div className='emoji-button' onClick={toggleEmojiPicker}>
+                    <EmojiEmotionsIcon sx={{fontSize:"24px", cursor:"pointer", color: "#54656f"}}/>
+                </div>
+                {showEmojiPicker && (
+                    <div className='emoji-picker-container' ref={emojiPickerRef}>
+                        <EmojiPicker 
+                            onEmojiClick={handleEmojiClick}
+                            searchPlaceholder="Search emoji..."
+                            width={350}
+                            height={400}
+                            previewConfig={{
+                                showPreview: false
+                            }}
+                        />
+                    </div>
+                )}
                </div>
                <div onClick={handleSendMessage}><SendIcon sx={{fontSize:"32px", margin:"10px", cursor:"pointer"}}/></div>
             </div>
