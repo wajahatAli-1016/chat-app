@@ -12,6 +12,7 @@ const allowedOrigins = [
     'http://localhost:3000',
     'https://your-frontend-app.vercel.app',
     'https://your-frontend-app.vercel.app/',
+    'https://chat-app-i4tv.vercel.app/',
     process.env.FRONTEND_URL
 ].filter(Boolean); // Remove undefined values
 

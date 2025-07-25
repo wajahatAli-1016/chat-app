@@ -8,6 +8,7 @@ const Login = ({funcSetLogin,setLoginFunc}) => {
   const [inputField,setInputField] = useState({mobileNumber:"", password:""})
   const [loading,setLoading]=useState(false);
   const navigate = useNavigate()
+    const API_BASE_URL = 'https://chat-app-j1ok.vercel.app';
     const handleClickNotRegistered = () =>{
         funcSetLogin(false)
     }
