@@ -3,6 +3,8 @@ import './register.css'
 import ProfileSelector from './ProfileSelector/profileSelector'
 import axios from 'axios'
 import Loader from './Loader/loader'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 // import { response } from 'express'
 const Register = ({ funcSetLogin }) => {
     const [profileModal, setProfileModal] = useState(false)
@@ -20,11 +22,40 @@ const Register = ({ funcSetLogin }) => {
         })
     }
     const handleRegister = async ()=>{
+        // Validate required fields
+        if (!inputField.name || !inputField.mobileNumber || !inputField.password) {
+            toast.error('Please fill in all required fields');
+            return;
+        }
+        
+        // Validate mobile number format (10 digits)
+        if (!/^\d{10}$/.test(inputField.mobileNumber)) {
+            toast.error('Please enter a valid 10-digit mobile number');
+            return;
+        }
+        
+        // Validate password length
+        if (inputField.password.length < 6) {
+            toast.error('Password must be at least 6 characters long');
+            return;
+        }
+        
         setLoading(true);
-       await axios.post("http://localhost:8000/api/auth/register",inputField).then(response=>{
+        console.log('Sending registration request to:', `${process.env.REACT_APP_API_URL || 'http://localhost:8000'}/api/auth/register`);
+        console.log('Request data:', inputField);
+        
+       await axios.post(`${process.env.REACT_APP_API_URL || 'http://localhost:8000'}/api/auth/register`,inputField).then(response=>{
+        console.log('Registration response:', response.data);
+        toast.success('Registration successful!');
         funcSetLogin(true)
        }).catch(err=>{
-        console.log(err)
+        console.log('Registration error:', err);
+        console.log('Error response:', err.response);
+        if(err.response && err.response.data && err.response.data.error) {
+            toast.error(err.response.data.error);
+        } else {
+            toast.error('Registration failed. Please try again.');
+        }
        }).finally(()=>{
         setLoading(false);
        })
@@ -36,7 +67,7 @@ const Register = ({ funcSetLogin }) => {
     }
     return (
         <div className='login'>
-            
+            <ToastContainer />
             {loading && <Loader/>}
                 <div className='register-card'>
                     <div className='card-name'>

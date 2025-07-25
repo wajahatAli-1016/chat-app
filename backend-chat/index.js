@@ -1,17 +1,31 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cookieParser = require("cookie-parser");
 const cors = require('cors'); 
 const {Server} = require('socket.io')
 const http = require('http');
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const server= http.createServer(app);
+// CORS configuration for both development and production
+const allowedOrigins = [
+    'http://localhost:3000',
+    'https://your-frontend-app.vercel.app',
+    'https://your-frontend-app.vercel.app/',
+    process.env.FRONTEND_URL
+].filter(Boolean); // Remove undefined values
+
 const io = new Server(server,{
-    cors:{
-        origin:"http://localhost:3000",
-        methods:['GET','POST'],
-    }
+   cors: {
+   origin: allowedOrigins,
+    credentials: true,
+}
 })
+
+app.use(cors({
+   origin: allowedOrigins,
+    credentials: true,
+}))
 const UserRoutes = require('./Routes/user');
 const ConversationRoutes = require('./Routes/conversation');
 const MessageRoutes = require('./Routes/message');
@@ -35,10 +49,8 @@ io.on('connection',(socket)=>{
     })
 })
 
-app.use(cors({
-    credentials:true,
-    origin:"http://localhost:3000"
-}))
+
+app.options('*', cors());
 
 
 app.use('/api/auth',UserRoutes);

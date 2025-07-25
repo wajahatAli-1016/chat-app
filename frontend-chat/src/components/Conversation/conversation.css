@@ -1,50 +1,128 @@
 .conv{
     display: flex;
-    height: 60px;
-    border-bottom: 1px solid #dbdbdb;
+    height: 72px;
+    border-bottom: 1px solid #e9edef;
     align-items: center;
-    padding: 5px 0px;
+    padding: 0 16px;
     cursor: pointer;
-    &:hover{
-        background-color: #f0f2f5;
-    }
+    transition: all 0.2s ease;
+    position: relative;
 }
+
+.conv:hover{
+    background-color: #f0f2f5;
+}
+
 .conv-profile-img{
-    width: 55px;
-    height: 55px;
+    width: 49px;
+    height: 49px;
     border-radius: 50%;
+    margin-right: 15px;
+    flex-shrink: 0;
 }
+
 .profile-img-conv{
     width: 100%;
     height: 100%;
-    border-radius:50% ;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.2s ease;
 }
+
+.conv:hover .profile-img-conv{
+    transform: scale(1.05);
+}
+
 .conv-name{
     flex-grow: 1;
-    margin-left: 8px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+.conv-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.conv-time{
+    font-size: 12px;
+    color: #667781;
+    font-weight: 400;
+}
+
 .conv-profile-name{
-    font-size: 22px;
-    font-weight: 600;
-}
-.conv-last-message{
-    color: #8b8b8b;
     font-size: 16px;
+    font-weight: 500;
+    color: #111b21;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
+.conv-last-message{
+    color: #667781;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .active-class{
     background-color: #f0f2f5;
+    border-left: 3px solid #00a884;
 }
+
+.active-class::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: #00a884;
+}
+
+/* Mobile Responsive Design */
 @media (max-width: 768px) {
     .conv{
-        
-        display: 1;
+        height: 68px;
+        padding: 0 12px;
     }
+    
+    .conv-profile-img{
+        width: 45px;
+        height: 45px;
+        margin-right: 12px;
+    }
+    
+    .conv-profile-name{
+        font-size: 15px;
+    }
+    
+    .conv-last-message{
+        font-size: 13px;
+    }
+    
     .responsive-conv{
         display: none;
-        flex: 0;
     }
-    .responsive-conv2{
-        display: 1;
-        flex: 1;
+}
+
+/* Tablet Responsive Design */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .conv{
+        height: 70px;
+        padding: 0 14px;
+    }
+    
+    .conv-profile-img{
+        width: 47px;
+        height: 47px;
+        margin-right: 13px;
     }
 }

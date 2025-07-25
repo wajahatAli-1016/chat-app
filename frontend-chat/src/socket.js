@@ -1,4 +1,4 @@
 import{io} from "socket.io-client";
-const socket = io('ws://localhost:8000');
+const socket = io(process.env.REACT_APP_SOCKET_URL || 'ws://localhost:8000');
 
 export default socket;

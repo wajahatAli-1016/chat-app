@@ -18,7 +18,7 @@ const Login = ({funcSetLogin,setLoginFunc}) => {
     }
     const handleLogin = async () =>{
       setLoading(true);
-      await axios.post("http://localhost:8000/api/auth/login", inputField, { withCredentials: true }).then(response => {
+      await axios.post(`${process.env.REACT_APP_API_URL || 'http://localhost:8000'}/api/auth/login`, inputField, { withCredentials: true }).then(response => {
        console.log(response)
        let userInfo = response.data.user;
        localStorage.setItem("userInfo",JSON.stringify(userInfo));

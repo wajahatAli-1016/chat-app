@@ -12,7 +12,7 @@ const Chats = (props) => {
     
 
     const  fetchMessages = async ()=>{
-        await axios.get(`http://localhost:8000/api/chat/get-message-chat/${props.selectedId}`,{withCredentials:true}).then((response)=>{
+        await axios.get(`${process.env.REACT_APP_API_URL || 'http://localhost:8000'}/api/chat/get-message-chat/${props.selectedId}`,{withCredentials:true}).then((response)=>{
             setChats(response.data.message)
         }).catch(err=>{
             console.log(err);
@@ -20,7 +20,7 @@ const Chats = (props) => {
     }
     const handleSendMessage = async()=>{
         if(content.trim().length===0)return alert("Please Enter message")
-        await axios.post(`http://localhost:8000/api/chat/post-message-chat`,{
+        await axios.post(`${process.env.REACT_APP_API_URL || 'http://localhost:8000'}/api/chat/post-message-chat`,{
             conversation:props.selectedId,
             content:content
         },{withCredentials:true}).then(response=>{
@@ -57,7 +57,9 @@ const Chats = (props) => {
         <div id='chat' className={`dashboard-chats ${props.selectedUser?`responsive-chat`:''}${props.selectedUser!==true?`remove-responsive-chat`:''}`}>
          
             <div className={`chatNameBlock ${props.selectedUser?`responsive-chatName`:''}`} >
-                <div className='back-btn' onClick={handleClose}><ArrowBackRoundedIcon sx={{fontSize:'30px', cursor:'pointer',marginLeft:'0px'}}/></div>
+                <div className='back-btn' onClick={handleClose}>
+                    <ArrowBackRoundedIcon sx={{fontSize:'24px', cursor:'pointer'}}/>
+                </div>
                 <div className='chat-profile-img'>
                     <img className='profile-img-conv' src={props?.selectedUserDetails[0]?.profilePic} alt='' />
                 </div>
