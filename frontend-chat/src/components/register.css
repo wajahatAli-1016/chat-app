@@ -5,8 +5,8 @@
     box-sizing: border-box;
     margin-top: 5%;
     padding: 10px;
-    background: rgba(0,0,0,0.1);
-    color: black;
+    background: var(--card-bg);
+    color: var(--text-primary);
     box-shadow: 0 0 10px #a18c8c, 0 0 20px #ffffff;
     transition: transform 0.5s;
 }
@@ -43,7 +43,7 @@
     background-color: rgba(0, 0,0,0.5);
 }
 .linkedlinks{
-    color: white;
+    color: var(--text-primary);
 }
 
 @media (max-width: 768px) {

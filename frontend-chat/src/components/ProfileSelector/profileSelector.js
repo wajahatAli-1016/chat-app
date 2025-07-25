@@ -14,8 +14,8 @@ const ProfileSelector = ({ handleProfileModalClose ,handleSetImage}) => {
         <div className='profileSelector'>
             <div className='profileCard'>
                 <div className='profile-selector-header'>
-                    <div style={{color:"black"}}>Select Profile Image</div>
-                    <div style={{ cursor: "pointer", color:"black"}} onClick={handleCloseButton}> X  </div>
+                    <div style={{color:"var(--text-primary)"}}>Select Profile Image</div>
+                    <div style={{ cursor: "pointer", color:"var(--text-primary)"}} onClick={handleCloseButton}> X  </div>
                 </div>
 
 

@@ -1,7 +1,7 @@
 .conv{
     display: flex;
     height: 72px;
-    border-bottom: 1px solid #e9edef;
+    border-bottom: 1px solid var(--border-color);
     align-items: center;
     padding: 0 16px;
     cursor: pointer;
@@ -10,7 +10,7 @@
 }
 
 .conv:hover{
-    background-color: #f0f2f5;
+    background-color: var(--hover-bg);
 }
 
 .conv-profile-img{
@@ -50,14 +50,14 @@
 
 .conv-time{
     font-size: 12px;
-    color: #667781;
+    color: var(--text-tertiary);
     font-weight: 400;
 }
 
 .conv-profile-name{
     font-size: 16px;
     font-weight: 500;
-    color: #111b21;
+    color: var(--text-primary);
     margin-bottom: 4px;
     white-space: nowrap;
     overflow: hidden;
@@ -65,7 +65,7 @@
 }
 
 .conv-last-message{
-    color: #667781;
+    color: var(--text-tertiary);
     font-size: 14px;
     white-space: nowrap;
     overflow: hidden;
@@ -73,7 +73,7 @@
 }
 
 .active-class{
-    background-color: #f0f2f5;
+    background-color: var(--hover-bg);
     border-left: 3px solid #00a884;
 }
 
@@ -85,6 +85,44 @@
     bottom: 0;
     width: 3px;
     background-color: #00a884;
+}
+
+.conv-delete-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--hover-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0;
+    animation: fadeIn 0.2s ease forwards;
+}
+
+.conv-delete-btn:hover {
+    background-color: #ff4444;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.conv-delete-btn:hover .MuiSvgIcon-root {
+    color: white !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
 }
 
 /* Mobile Responsive Design */
@@ -106,6 +144,16 @@
     
     .conv-last-message{
         font-size: 13px;
+    }
+    
+    .conv-delete-btn {
+        width: 20px;
+        height: 20px;
+        right: 8px;
+    }
+    
+    .conv-delete-btn .MuiSvgIcon-root {
+        font-size: 14px !important;
     }
     
     .responsive-conv{

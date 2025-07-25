@@ -3,7 +3,7 @@
     width: 100%;
     height: 100vh;  
     display: flex;    
-    background: radial-gradient(circle, #3b0256,#0b0234,black);
+    background: var(--gradient-primary);
     /* background-color: rgb(12, 2, 58); */
       
 }

@@ -4,6 +4,8 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 import Dashboard from './components/Dashboard/dashboard'
 import { useState } from 'react';
 import socket from'./socket'
+import { ThemeProvider } from './context/ThemeContext';
+
 function App() {
   const [isLogin, setIsLogin] = useState(localStorage.getItem("isLogin"));
 
@@ -11,13 +13,14 @@ function App() {
     setIsLogin(value)
   }
   return (
-    <div className="App">
-
-      <Routes>
-        <Route path='/' element={isLogin ? <Navigate to={"/dashboard"} /> : <Home setLoginFunc={setLoginFunc} />} />
-        <Route path='/dashboard' element={isLogin ? <Dashboard setLoginFunc={setLoginFunc}/> : <Navigate to={'/'} />} />
-      </Routes>
-    </div>
+    <ThemeProvider>
+      <div className="App">
+        <Routes>
+          <Route path='/' element={isLogin ? <Navigate to={"/dashboard"} /> : <Home setLoginFunc={setLoginFunc} />} />
+          <Route path='/dashboard' element={isLogin ? <Dashboard setLoginFunc={setLoginFunc}/> : <Navigate to={'/'} />} />
+        </Routes>
+      </div>
+    </ThemeProvider>
   );
 }
 

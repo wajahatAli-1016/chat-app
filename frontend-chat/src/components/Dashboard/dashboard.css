@@ -1,7 +1,7 @@
 .dashboard{
     width: 100%;
     height: 100vh;
-    background: #f0f2f5;
+    background: var(--bg-secondary);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,17 +11,17 @@
 .dashboard-card{
     width: 100%;
     max-width: 1400px;
-    background-color: white;
+    background-color: var(--bg-primary);
     height: 100vh;
     display: flex;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px var(--shadow-color);
     border-radius: 0;
 }
 
 .dashboard-conversation{
     flex: 0 0 400px;
-    border-right: 1px solid #e9edef;
-    background: #ffffff;
+    border-right: 1px solid var(--border-color);
+    background: var(--bg-primary);
     display: flex;
     flex-direction: column;
 }
@@ -39,18 +39,18 @@
     justify-content: space-between;
     align-items: center;
     padding: 16px 20px;
-    background: #f0f2f5;
-    border-bottom: 1px solid #e9edef;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
     font-size: 18px;
     font-weight: 600;
-    color: #111b21;
+    color: var(--text-primary);
 }
 
 .whatsapp-title{
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #111b21;
+    color: var(--text-primary);
     font-weight: 600;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .header-icon{
-    color: #54656f;
+    color: var(--text-secondary);
     cursor: pointer;
     padding: 8px;
     margin-right: 40px;
@@ -77,15 +77,15 @@
 }
 
 .header-icon:hover{
-    background-color: #e9edef;
+    background-color: var(--hover-bg);
 }
 
 .searchaBoxDiv{
     width: 100%;
     box-sizing: border-box;
     padding: 8px 12px;
-    background: #ffffff;
-    border-bottom: 1px solid #e9edef;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
     position: relative;
 }
 
@@ -99,7 +99,7 @@
     left: 12px;
     top: 50%;
     transform: translateY(-50%);
-    color: #54656f;
+    color: var(--text-secondary);
     font-size: 20px;
     z-index: 1;
 }
@@ -111,19 +111,19 @@
     box-sizing: border-box;
     border-radius: 8px;
     border: none;
-    background-color: #f0f2f5;
+    background-color: var(--input-bg);
     font-size: 15px;
-    color: #111b21;
+    color: var(--text-primary);
 }
 
 .searchBox:focus{
     outline: none;
-    background-color: #ffffff;
+    background-color: var(--bg-primary);
     box-shadow: 0 0 0 1px #00a884;
 }
 
 .searchBox::placeholder{
-    color: #667781;
+    color: var(--text-tertiary);
 }
 
 .conv-block{
@@ -131,7 +131,7 @@
     flex-grow: 1;
     overflow-y: auto;
     overflow-x: hidden;
-    background: #ffffff;
+    background: var(--bg-primary);
 }
 
 .conv-block::-webkit-scrollbar {
@@ -154,6 +154,8 @@
 .noChatSelected{
     flex: 1;
     display: flex;
+    background: var(--bg-primary);
+    color: var(--text-primary);
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -188,8 +190,8 @@
     left: 12px;
     right: 12px;
     z-index: 10;
-    background-color: white;
-    border: 1px solid #e9edef;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 8px 0;
     box-sizing: border-box;
@@ -197,7 +199,7 @@
     flex-direction: column;
     max-height: 300px;
     overflow-y: auto;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .search-item{
@@ -210,7 +212,7 @@
 }
 
 .search-item:hover{
-        background-color: #f0f2f5;
+        background-color: var(--hover-bg);
 }
 
 .search-item-profile{
@@ -222,20 +224,27 @@
 
 .search-item div:nth-child(2){
     font-weight: 500;
-    color: #111b21;
+    color: var(--text-primary);
     font-size: 14px;
 }
 
 .search-item-mobile{
     font-size: 13px;
-    color: #667781;
+    color: var(--text-tertiary);
     margin-left: auto;
+}
+
+.search-item div:only-child {
+    color: var(--text-secondary);
+    font-style: italic;
+    text-align: center;
+    width: 100%;
 }
 
 /* Mobile Responsive Design */
 @media (max-width: 768px) {
     .dashboard{
-        background: #ffffff;
+        background: var(--bg-primary);
     }
     
     .dashboard-card{
@@ -269,7 +278,7 @@
     
     .noChatSelected{
         display: flex;
-        background: #ffffff;
+        background: var(--bg-primary);
         padding: 20px 16px;
     }
     

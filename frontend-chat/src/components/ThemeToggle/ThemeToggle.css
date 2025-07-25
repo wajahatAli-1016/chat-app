@@ -1,0 +1,82 @@
+.theme-toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle {
+  position: relative;
+  width: 50px;
+  height: 26px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle.light {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+}
+
+.theme-toggle.dark {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle.dark .toggle-slider {
+  transform: translateX(24px);
+  background: #1a1a1a;
+}
+
+.theme-icon {
+  font-size: 14px !important;
+  color: #f39c12;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle.dark .theme-icon {
+  color: #f1c40f;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .theme-toggle {
+    width: 45px;
+    height: 24px;
+  }
+  
+  .toggle-slider {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .theme-toggle.dark .toggle-slider {
+    transform: translateX(21px);
+  }
+  
+  .theme-icon {
+    font-size: 12px !important;
+  }
+} 

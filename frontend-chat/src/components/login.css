@@ -15,8 +15,8 @@
     box-sizing: border-box;
     margin-top: 10%;
     padding: 10px;
-    background: rgba(0,0,0,0.1);
-    color: black;
+    background: var(--card-bg);
+    color: var(--text-primary);
     box-shadow: 0 0 10px #a18c8c, 0 0 20px #ffffff;
     transition: transform 0.5s;
 }
@@ -27,7 +27,7 @@
     font-size: 32px;
     font-weight: 600;
     text-align: center;
-    color: white;
+    color: var(--text-primary);
 }
 .login-form{
     width: 500px;
@@ -47,7 +47,7 @@
     border: none;
     box-shadow: 0 0 5px #a18c8c, 0 0 0px #ffffff;
     background-color: transparent;
-    color: white;
+    color: var(--text-primary);
     &:focus{
         outline: none;
     }
@@ -59,15 +59,15 @@
     font-size: 24px;
     cursor: pointer;
     box-shadow: 0 0 5px #a18c8c, 0 0 0px #ffffff;
-    color: white;
+    color: var(--text-primary);
     &:hover{
-        background-color: #0b0234;
+        background-color: var(--bg-secondary);
     }
 } 
  .linkedlinks{
     margin-left: 150px;
 
-    color: black;
+    color: var(--text-primary);
     cursor: pointer;
     &:hover{
         text-decoration: underline;

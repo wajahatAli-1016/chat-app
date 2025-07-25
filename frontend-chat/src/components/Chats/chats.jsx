@@ -6,6 +6,7 @@ import axios from 'axios';
 import socket from '../../socket'
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import EmojiPicker from 'emoji-picker-react';
+import { formatMessageTime } from '../../utils/timeUtils';
 
 const Chats = (props) => {
     const [content,setContent] = useState('');
@@ -107,14 +108,19 @@ const Chats = (props) => {
                    {
                     chats.map((item,index)=>{
                         return(
-                            <div ref={ref}className={`chat ${ownId===item?.sender?._id ? 'message-me':null}`}>
-                            <div className='chat-send-rev_image'>
-                                <img className='profile-img-conv' src={item?.sender?.profilePic} alt='' />
+                            <div ref={ref} className={`chat ${ownId===item?.sender?._id ? 'message-me':null}`}>
+                                <div className='chat-send-rev_image'>
+                                    <img className='profile-img-conv' src={item?.sender?.profilePic} alt='' />
+                                </div>
+                                <div className={`message ${ownId===item?.sender?._id ? 'my-message':null}`}>
+                                    <div className="message-content">
+                                        {item?.message}
+                                    </div>
+                                    <div className="message-time">
+                                        {formatMessageTime(item?.createdAt)}
+                                    </div>
+                                </div>
                             </div>
-                            <div className={`message ${ownId===item?.sender?._id ? 'my-message':null}`}>
-                                {item?.message}
-                            </div>
-                        </div>
                         )
                     })
                    }
@@ -130,7 +136,7 @@ const Chats = (props) => {
                     className='searchBox messageBox'
                 />
                 <div className='emoji-button' onClick={toggleEmojiPicker}>
-                    <EmojiEmotionsIcon sx={{fontSize:"24px", cursor:"pointer", color: "#54656f"}}/>
+                    <EmojiEmotionsIcon sx={{fontSize:"24px", cursor:"pointer", color: "var(--text-secondary)"}}/>
                 </div>
                 {showEmojiPicker && (
                     <div className='emoji-picker-container' ref={emojiPickerRef}>
@@ -146,7 +152,7 @@ const Chats = (props) => {
                     </div>
                 )}
                </div>
-               <div onClick={handleSendMessage}><SendIcon sx={{fontSize:"32px", margin:"10px", cursor:"pointer"}}/></div>
+               <div onClick={handleSendMessage}><SendIcon sx={{fontSize:"32px", margin:"10px", cursor:"pointer", color: "var(--text-secondary)"}}/></div>
             </div>
              
         </div>
