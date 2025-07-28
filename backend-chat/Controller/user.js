@@ -44,11 +44,10 @@ exports.register = async(req,res)=>{
     }
 }
 const cookieOptions = {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'Lax'
+  httpOnly: true,
+  secure: true,       // Always true in production (Railway uses HTTPS)
+  sameSite: 'None'    // REQUIRED for cross-origin cookies
 };
-
 exports.login = async(req,res) =>{
     try{
       const {mobileNumber, password} = req.body;
