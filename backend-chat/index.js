@@ -10,7 +10,7 @@ const server= http.createServer(app);
 // CORS configuration for both development and production
 const allowedOrigins = [
     'http://localhost:3000',
-   'https://chat-app-oscz.vercel.app/'
+   'https://chat-app-oscz.vercel.app'
 ].filter(Boolean); // Remove undefined values
 
 const io = new Server(server,{
